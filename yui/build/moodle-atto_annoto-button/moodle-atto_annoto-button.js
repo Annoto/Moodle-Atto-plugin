@@ -34,17 +34,23 @@ YUI.add('moodle-atto_annoto-button', function (Y, NAME) {
  */
 
 Y.namespace('M.atto_annoto').Button = Y.Base.create('button', Y.M.editor_atto.EditorPlugin, [], {
-    initializer: function() {
+    initializer: function(btn) {
             
             var button = this.addButton({
             icon: 'icon',
             iconComponent: 'atto_annoto',
             buttonName: 'annoto',
-            callback: this._toggleAnnoto,
+            callback: this._toggleAnnoto
         });
 
         this.get('host').on('pluginsloaded', function(e) {
-                this._setAnnoto();
+            if (btn.defaultmode == 'on') {
+                this._setAnnotoOn();
+            } else if (btn.defaultmode == 'off') {
+                this._setAnnotoOff();
+            } else {
+                this._setAnnoto(); // default value
+            }
         }, this, button);
 
     },
@@ -62,6 +68,10 @@ Y.namespace('M.atto_annoto').Button = Y.Base.create('button', Y.M.editor_atto.Ed
             this.unHighlightButtons('annoto');
             this.markUpdated();
         } else {
+            var checkDisTag = Y.all('annotodisable');
+            if (checkDisTag.size() > 0) {
+                checkDisTag.remove();
+            }    
             var annotoTag = Y.Node.create('<annoto />');
             annotoTag.appendTo(this.editor);
             this.highlightButtons('annoto');
@@ -71,12 +81,40 @@ Y.namespace('M.atto_annoto').Button = Y.Base.create('button', Y.M.editor_atto.Ed
 
     _setAnnoto: function () {
         var checkTag = Y.all('annoto');
-        console.log(checkTag);
         if (checkTag.size() > 0) {
             this.highlightButtons('annoto');
-            return;
+            this.markUpdated();
+        }
+    },
+
+    _setAnnotoOn: function () {
+        var checkDisTag = Y.all('annotodisable');
+        if (checkDisTag.size() > 0) {
+            checkDisTag.remove();
+        }
+        var checkTag = Y.all('annoto');
+        if (checkTag.size() <= 1) {
+            var annotoTag = Y.Node.create('<annoto />');
+            annotoTag.appendTo(this.editor);
+            this.highlightButtons('annoto');
+            this.markUpdated();
+        }
+    },
+
+    _setAnnotoOff: function () {
+        var checkTag = Y.all('annoto');
+        if (checkTag.size() > 0) {
+            checkTag.remove();
+            this.unHighlightButtons('annoto');
+        }
+        var checkDisTag = Y.all('annotodisable');
+        if (checkDisTag.size() <= 1) {
+            var annotoDisTag = Y.Node.create('<annotodisable />');
+            annotoDisTag.appendTo(this.editor);
+            this.markUpdated();
         }
     }
+
 });
 
 

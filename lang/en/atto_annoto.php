@@ -23,3 +23,8 @@
  */
 
 $string['pluginname'] = 'Annoto';
+$string['default_mode'] = 'Default mode';
+$string['default_mode_descr'] = 'Choose default plugin mode';
+$string['default_mode_none'] = 'None';
+$string['default_mode_on'] = 'On';
+$string['default_mode_off'] = 'Off';
