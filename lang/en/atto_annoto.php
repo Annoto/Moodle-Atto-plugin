@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'atto_bold', language 'en'.
+ * Strings for component 'atto_annoto', language 'en'.
  *
  * @package    atto_annoto
- * @copyright  Davidson
+ * @copyright  Annoto Ltd.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Atto text editor integration version file.
+ * Anntoto Atto text editor integration version file.
  *
- * @package    atto_bold
- * @copyright  2013 Damyon Wiese  <damyon@moodle.com>
+ * @package    atto_annoto
+ * @copyright  Annoto Ltd.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

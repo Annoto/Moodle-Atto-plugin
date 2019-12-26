@@ -17,7 +17,7 @@ YUI.add('moodle-atto_annoto-button', function (Y, NAME) {
 
 /*
  * @package    atto_annoto
- * @copyright  Devlion  
+ * @copyright  Annoto Ltd.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
